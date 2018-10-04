@@ -3,9 +3,9 @@ package com.example.android.courtcounter;
 import android.arch.lifecycle.ViewModel;
 
 /**
- * Created by jill on {DATE}
+ * Created by Jill Heske on 10/04/2018
  */
-public class TeamScoresViewModel extends ViewModel {
+class TeamScoresViewModel extends ViewModel {
 
     // Create Model variables to hold team scores
     int scoreTeamA;
