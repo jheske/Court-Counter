@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
 
     // ViewModel containing team scores and LiveData objects
     // for dispatching updates
-    TeamScoresViewModel mViewModel;
+    ScoresViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +37,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // Create a ViewModel with LiveData to dispatch Model changes automatically
-        mViewModel = ViewModelProviders.of(this).get(TeamScoresViewModel.class);
-
+        //  mViewModel = ViewModelProviders.of(this).get(ScoresViewModel.class);
+        //   mViewModel = ViewModelProviders.of(this).get(ScoresViewModel.class);
+        mViewModel =
+                ViewModelProviders.of(this,new ScoresViewModelFactory(this.getApplication(),
+                                10))
+                        .get(ScoresViewModel.class);
         /*
          * Create observer to receive score changes from ViewModel and update the UI
          */

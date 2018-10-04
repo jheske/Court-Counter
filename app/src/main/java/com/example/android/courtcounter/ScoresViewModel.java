@@ -1,7 +1,10 @@
 package com.example.android.courtcounter;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
 
 /*
  * Copyright (C) 2018 The Android Open Source Project
@@ -18,7 +21,8 @@ import android.arch.lifecycle.ViewModel;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-class TeamScoresViewModel extends ViewModel {
+//https://github.com/googlesamples/android-architecture-components/blob/master/BasicSample/app/src/main/java/com/example/android/persistence/viewmodel/ProductViewModel.java
+class ScoresViewModel extends ViewModel {
 
     // Create Model variables to hold team scores
     private int scoreTeamA;
@@ -30,6 +34,10 @@ class TeamScoresViewModel extends ViewModel {
      */
     private MutableLiveData<Integer> liveScoreTeamA;
     private MutableLiveData<Integer> liveScoreTeamB;
+
+    ScoresViewModel(Integer extraPoints) {
+        updateTeamAPoints(extraPoints);
+    }
 
     /**
      * Instantiate LiveData Objects liveScoreBeamA and liveScoreTeamB
