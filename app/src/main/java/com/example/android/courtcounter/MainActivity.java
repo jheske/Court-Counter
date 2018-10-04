@@ -16,6 +16,7 @@
 package com.example.android.courtcounter;
 
 import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModel;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -39,13 +40,10 @@ public class MainActivity extends AppCompatActivity {
         // Create a ViewModel with LiveData to dispatch Model changes automatically
         mViewModel = ViewModelProviders.of(this).get(TeamScoresViewModel.class);
 
-        /*
-         * Create observer to receive score changes from ViewModel and update the UI
-         */
+        // Create observers to receive score changes from ViewModel and update UI
         final Observer<Integer> teamAScoreObserver = new Observer<Integer>() {
             @Override
             public void onChanged(final Integer newScore) {
-                // Update the UI with teamA score data
                 displayForTeamA(newScore);
             }
         };
@@ -53,15 +51,12 @@ public class MainActivity extends AppCompatActivity {
         final Observer<Integer> teamBScoreObserver = new Observer<Integer>() {
             @Override
             public void onChanged(final Integer score) {
-                // Update the UI with teamA score data
                 displayForTeamB(score);
             }
         };
 
-        /*
-         * Create observers to wait for ViewModel to dispatch changes.
-         * Pass in this Activity as the LifecycleOwner and the observer.
-         */
+        // Begin observing LiveData.  "this" Activity is the LifecycleOwner, which
+        // handles Lifecycle events (configuration changes!) automatically.
         mViewModel.getScoreTeamA().observe(this, teamAScoreObserver);
         mViewModel.getScoreTeamB().observe(this, teamBScoreObserver);
 
