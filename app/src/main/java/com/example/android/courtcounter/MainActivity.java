@@ -15,6 +15,7 @@
  */
 package com.example.android.courtcounter;
 
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -26,13 +27,8 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    // Tracks the score for Team A
-    //int scoreTeamA = 0;
-
-    // Tracks the score for Team B
-    //int scoreTeamB = 0;
-
-    // ViewModel containing team scores
+    // ViewModel containing team scores and LiveData objects
+    // for dispatching updates
     TeamScoresViewModel mViewModel;
 
     @Override
@@ -40,71 +36,85 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Retrieve data from teamScoresViewModel
+        // Create a ViewModel with LiveData to dispatch Model changes automatically
         mViewModel = ViewModelProviders.of(this).get(TeamScoresViewModel.class);
-        displayForTeamA(mViewModel.scoreTeamA);
-        displayForTeamB(mViewModel.scoreTeamB);
+
+        /*
+         * Create observer to receive score changes from ViewModel and update the UI
+         */
+        final Observer<Integer> teamAScoreObserver = new Observer<Integer>() {
+            @Override
+            public void onChanged(final Integer newScore) {
+                // Update the UI with teamA score data
+                displayForTeamA(newScore);
+            }
+        };
+
+        final Observer<Integer> teamBScoreObserver = new Observer<Integer>() {
+            @Override
+            public void onChanged(final Integer score) {
+                // Update the UI with teamA score data
+                displayForTeamB(score);
+            }
+        };
+
+        /*
+         * Create observers to wait for ViewModel to dispatch changes.
+         * Pass in this Activity as the LifecycleOwner and the observer.
+         */
+        mViewModel.getScoreTeamA().observe(this, teamAScoreObserver);
+        mViewModel.getScoreTeamB().observe(this, teamBScoreObserver);
+
     }
 
     /**
-     * Increase the score for Team A by 1 point.
+     * Call ViewModel to increase the score for Team A by 1 point.
      */
     public void addOneForTeamA(View v) {
-        //Remove local reference
-        //scoreTeamA = scoreTeamA + 1;
-
-        mViewModel.scoreTeamA = mViewModel.scoreTeamA + 1;
-        displayForTeamA(mViewModel.scoreTeamA);
+        mViewModel.updateTeamAPoints(1);
     }
 
     /**
-     * Increase the score for Team A by 2 points.
+     * Call ViewModel to increase the score for Team A by 2 points.
      */
     public void addTwoForTeamA(View v) {
-        mViewModel.scoreTeamA = mViewModel.scoreTeamA + 2;
-        displayForTeamA(mViewModel.scoreTeamA);
+        mViewModel.updateTeamAPoints(2);
     }
 
     /**
-     * Increase the score for Team A by 3 points.
+     * Call ViewModel to increase the score for Team A by 3 points.
      */
     public void addThreeForTeamA(View v) {
-        mViewModel.scoreTeamA = mViewModel.scoreTeamA + 3;
-        displayForTeamA(mViewModel.scoreTeamA);
+        mViewModel.updateTeamAPoints(3);
     }
 
     /**
-     * Increase the score for Team B by 1 point.
+     * Call ViewModel to increase the score for Team B by 1 point.
      */
     public void addOneForTeamB(View v) {
-        mViewModel.scoreTeamB = mViewModel.scoreTeamB + 1;
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.updateTeamBPoints(1);
     }
 
     /**
-     * Increase the score for Team B by 2 points.
+     * Call ViewModel to increase the score for Team B by 2 points.
      */
     public void addTwoForTeamB(View v) {
-        mViewModel.scoreTeamB = mViewModel.scoreTeamB + 2;
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.updateTeamBPoints(2);
     }
 
     /**
-     * Increase the score for Team B by 3 points.
+     * Call ViewModel to increase the score for Team B by 3 points.
      */
     public void addThreeForTeamB(View v) {
-        mViewModel.scoreTeamB = mViewModel.scoreTeamB + 3;
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.updateTeamBPoints(3);
     }
 
     /**
-     * Resets the score for both teams back to 0.
+     * Call ViewModel to reset the score for both teams back to 0.
      */
     public void resetScore(View v) {
-        mViewModel.scoreTeamA = 0;
-        mViewModel.scoreTeamB = 0;
-        displayForTeamA(mViewModel.scoreTeamA);
-        displayForTeamB(mViewModel.scoreTeamB);
+        mViewModel.updateTeamAPoints(0);
+        mViewModel.updateTeamBPoints(0);
     }
 
     /**
