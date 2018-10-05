@@ -22,17 +22,18 @@ import android.support.annotation.NonNull;
  */
 public class ScoresViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
- //   private final Application application;
+    // The argument we want to pass to ScoresViewModel
     private final Integer extraPoints;
 
-    ScoresViewModelFactory(@NonNull Application application, int extraPoints) {
-       // this.application = application;
+    ScoresViewModelFactory(int extraPoints) {
         this.extraPoints = extraPoints;
     }
 
     @NonNull
-    @Override
     @SuppressWarnings("unchecked")
+    // Factory method to create an instance of ViewModel or one of its subclasses
+    // Under the hood this calls ScoresViewModel.newInstance(), which calls a ScoresViewModel constructor.
+    @Override
     public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
         return (T) new ScoresViewModel(extraPoints);
     }

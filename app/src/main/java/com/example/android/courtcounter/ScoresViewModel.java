@@ -21,7 +21,6 @@ import android.support.annotation.NonNull;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-//https://github.com/googlesamples/android-architecture-components/blob/master/BasicSample/app/src/main/java/com/example/android/persistence/viewmodel/ProductViewModel.java
 class ScoresViewModel extends ViewModel {
 
     // Create Model variables to hold team scores
@@ -35,6 +34,7 @@ class ScoresViewModel extends ViewModel {
     private MutableLiveData<Integer> liveScoreTeamA;
     private MutableLiveData<Integer> liveScoreTeamB;
 
+    // Constructor that ScoresViewModelFactory will call to create the ViewModel
     ScoresViewModel(Integer extraPoints) {
         updateTeamAPoints(extraPoints);
     }

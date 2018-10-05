@@ -36,13 +36,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Create a ViewModel with LiveData to dispatch Model changes automatically
-        //  mViewModel = ViewModelProviders.of(this).get(ScoresViewModel.class);
-        //   mViewModel = ViewModelProviders.of(this).get(ScoresViewModel.class);
-        mViewModel =
-                ViewModelProviders.of(this,new ScoresViewModelFactory(this.getApplication(),
-                                10))
-                        .get(ScoresViewModel.class);
+        // Create extra points
+        int extraPoints = 10;
+        // Create a factory for instantiating ViewModel with the extraPoints argument
+        ScoresViewModelFactory scoresViewModelFactory = new ScoresViewModelFactory(extraPoints);
+        // Use the factory to create a ViewModel with arguments
+        mViewModel = ViewModelProviders.of(this, scoresViewModelFactory).get(ScoresViewModel.class);
         /*
          * Create observer to receive score changes from ViewModel and update the UI
          */
