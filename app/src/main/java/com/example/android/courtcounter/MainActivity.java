@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     //int scoreTeamB = 0;
 
     // ViewModel containing team scores
-    TeamScoresViewModel mViewModel;
+    ScoresViewModel mViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //Retrieve data from teamScoresViewModel
-        mViewModel = ViewModelProviders.of(this).get(TeamScoresViewModel.class);
+        mViewModel = ViewModelProviders.of(this).get(ScoresViewModel.class);
         displayForTeamA(mViewModel.scoreTeamA);
         displayForTeamB(mViewModel.scoreTeamB);
     }
