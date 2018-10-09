@@ -27,8 +27,7 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    // ViewModel containing team scores and LiveData objects
-    // for dispatching updates
+    // ViewModel containing team scores and LiveData objects for dispatching updates
     ScoresViewModel mViewModel;
 
     @Override
@@ -42,15 +41,30 @@ public class MainActivity extends AppCompatActivity {
         // Create observers to receive score changes from ViewModel and update UI
         final Observer<Integer> teamAScoreObserver = new Observer<Integer>() {
             @Override
-            public void onChanged(final Integer newScore) {
-                displayForTeamA(newScore);
+            public void onChanged(final Integer score) {
+                displayScoreForTeamA(score);
             }
         };
 
         final Observer<Integer> teamBScoreObserver = new Observer<Integer>() {
             @Override
             public void onChanged(final Integer score) {
-                displayForTeamB(score);
+                displayScoreForTeamB(score);
+            }
+        };
+
+        // Create observers to receive score changes from ViewModel and update UI
+        final Observer<Integer> teamAFreeThrowObserver = new Observer<Integer>() {
+            @Override
+            public void onChanged(final Integer freeThrows) {
+                displayFreeThrowsForTeamA(freeThrows);
+            }
+        };
+
+        final Observer<Integer> teamBFreeThrowObserver = new Observer<Integer>() {
+            @Override
+            public void onChanged(final Integer freeThrows) {
+                displayFreeThrowsForTeamB(freeThrows);
             }
         };
 
@@ -58,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
         // handles Lifecycle events (configuration changes!) automatically.
         mViewModel.getScoreTeamA().observe(this, teamAScoreObserver);
         mViewModel.getScoreTeamB().observe(this, teamBScoreObserver);
-
+        mViewModel.getFreeThrowsTeamA().observe(this, teamAFreeThrowObserver);
+        mViewModel.getFreeThrowsTeamB().observe(this, teamBFreeThrowObserver);
     }
 
     /**
@@ -107,23 +122,32 @@ public class MainActivity extends AppCompatActivity {
      * Call ViewModel to reset the score for both teams back to 0.
      */
     public void resetScore(View v) {
-        mViewModel.updateTeamAPoints(0);
-        mViewModel.updateTeamBPoints(0);
+        mViewModel.resetScores();
     }
 
     /**
      * Displays the given score for Team A.
      */
-    public void displayForTeamA(int score) {
-        TextView scoreView = findViewById(R.id.team_a_score);
+    public void displayScoreForTeamA(int score) {
+        TextView scoreView =  findViewById(R.id.team_a_score);
         scoreView.setText(String.valueOf(score));
+    }
+
+    public void displayFreeThrowsForTeamA(int freeThrows) {
+        TextView freeThrowsView =  findViewById(R.id.team_a_free_throws);
+        freeThrowsView.setText(String.valueOf(freeThrows));
     }
 
     /**
      * Displays the given score for Team B.
      */
-    public void displayForTeamB(int score) {
-        TextView scoreView = findViewById(R.id.team_b_score);
+    public void displayScoreForTeamB(int score) {
+        TextView scoreView =  findViewById(R.id.team_b_score);
         scoreView.setText(String.valueOf(score));
+    }
+
+    public void displayFreeThrowsForTeamB(int freeThrows) {
+        TextView freeThrowsView =  findViewById(R.id.team_b_free_throws);
+        freeThrowsView.setText(String.valueOf(freeThrows));
     }
 }
