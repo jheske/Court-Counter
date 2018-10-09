@@ -23,4 +23,14 @@ class ScoresViewModel extends ViewModel {
     int scoreTeamA;
     int scoreTeamB;
 
+    // 1, 2, and three point counters
+    int onePointCountTeamA = 0;
+    int twoPointCountTeamA = 0;
+    int threePointCountTeamA = 0;
+    int onePointCountTeamB = 0;
+    int twoPointCountTeamB = 0;
+    int threePointCountTeamB = 0;
+
+
+
 }
