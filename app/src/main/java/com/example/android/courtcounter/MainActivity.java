@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Call ViewModel to increase the score for Team A by 1 point.
      */
-    public void addOneForTeamA(View v) {
+    public void freeThrowTeamA(View v) {
         mViewModel.updateTeamAPoints(1);
     }
 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Call ViewModel to increase the score for Team B by 1 point.
      */
-    public void addOneForTeamB(View v) {
+    public void freeThrowTeamB(View v) {
         mViewModel.updateTeamBPoints(1);
     }
 
