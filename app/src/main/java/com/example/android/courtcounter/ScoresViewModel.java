@@ -71,7 +71,7 @@ class ScoresViewModel extends ViewModel {
         liveScoreTeamA.setValue(scoreTeamA);
         if (points == 1) {
             freeThrowsTeamA = freeThrowsTeamA + 1;
-            liveFreeThrowsTeamA.setValue(freeThrowsTeamA);
+            getFreeThrowsTeamA().setValue(freeThrowsTeamA);
         }
     }
 
@@ -84,7 +84,7 @@ class ScoresViewModel extends ViewModel {
         liveScoreTeamB.setValue(scoreTeamB);
         if (points == 1) {
             freeThrowsTeamB = freeThrowsTeamB + 1;
-            liveFreeThrowsTeamB.setValue(freeThrowsTeamB);
+            getFreeThrowsTeamB().setValue(freeThrowsTeamB);
         }
     }
 
@@ -94,10 +94,10 @@ class ScoresViewModel extends ViewModel {
         scoreTeamB = 0;
         freeThrowsTeamA = 0;
         freeThrowsTeamB = 0;
-        // Dispatch values to observers
-        liveScoreTeamA.setValue(scoreTeamA);
-        liveScoreTeamB.setValue(scoreTeamB);
-        liveFreeThrowsTeamA.setValue(freeThrowsTeamA);
-        liveFreeThrowsTeamB.setValue(freeThrowsTeamB);
+        // Dispatch values to observers.
+        getScoreTeamA().setValue(scoreTeamA);
+        getScoreTeamB().setValue(scoreTeamB);
+        getFreeThrowsTeamA().setValue(freeThrowsTeamA);
+        getFreeThrowsTeamB().setValue(freeThrowsTeamB);
     }
 }
