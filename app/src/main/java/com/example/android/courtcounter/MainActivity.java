@@ -26,12 +26,6 @@ import android.widget.TextView;
  */
 public class MainActivity extends AppCompatActivity {
 
-    // Tracks the score for Team A
-    //int scoreTeamA = 0;
-
-    // Tracks the score for Team B
-    //int scoreTeamB = 0;
-
     // ViewModel containing team scores
     ScoresViewModel mViewModel;
 
@@ -54,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         //scoreTeamA = scoreTeamA + 1;
 
         mViewModel.scoreTeamA = mViewModel.scoreTeamA + 1;
+        mViewModel.onePointCountTeamA = mViewModel.onePointCountTeamA + 1;
         displayForTeamA(mViewModel.scoreTeamA);
     }
 
@@ -62,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamA(View v) {
         mViewModel.scoreTeamA = mViewModel.scoreTeamA + 2;
+        mViewModel.twoPointCountTeamA = mViewModel.twoPointCountTeamA + 1;
         displayForTeamA(mViewModel.scoreTeamA);
     }
 
@@ -71,6 +67,8 @@ public class MainActivity extends AppCompatActivity {
     public void addThreeForTeamA(View v) {
         mViewModel.scoreTeamA = mViewModel.scoreTeamA + 3;
         displayForTeamA(mViewModel.scoreTeamA);
+
+        mViewModel.threePointCountTeamA = mViewModel.threePointCountTeamA + 1;
     }
 
     /**
@@ -78,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addOneForTeamB(View v) {
         mViewModel.scoreTeamB = mViewModel.scoreTeamB + 1;
+        mViewModel.onePointCountTeamB = mViewModel.onePointCountTeamB + 1;
         displayForTeamB(mViewModel.scoreTeamB);
     }
 
@@ -86,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamB(View v) {
         mViewModel.scoreTeamB = mViewModel.scoreTeamB + 2;
+        mViewModel.twoPointCountTeamB = mViewModel.twoPointCountTeamB + 1;
         displayForTeamB(mViewModel.scoreTeamB);
     }
 
@@ -94,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamB(View v) {
         mViewModel.scoreTeamB = mViewModel.scoreTeamB + 3;
+        mViewModel.threePointCountTeamB = mViewModel.threePointCountTeamB + 1;
         displayForTeamB(mViewModel.scoreTeamB);
     }
 
@@ -103,6 +104,12 @@ public class MainActivity extends AppCompatActivity {
     public void resetScore(View v) {
         mViewModel.scoreTeamA = 0;
         mViewModel.scoreTeamB = 0;
+        mViewModel.onePointCountTeamA = 0;
+        mViewModel.twoPointCountTeamA = 0;
+        mViewModel.threePointCountTeamA = 0;
+        mViewModel.onePointCountTeamB = 0;
+        mViewModel.twoPointCountTeamB = 0;
+        mViewModel.threePointCountTeamB = 0;        
         displayForTeamA(mViewModel.scoreTeamA);
         displayForTeamB(mViewModel.scoreTeamB);
     }
