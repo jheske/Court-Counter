@@ -102,10 +102,10 @@ class ScoresViewModel extends ViewModel {
         scoreTeamB = 0;
         freeThrowsTeamA = 0;
         freeThrowsTeamB = 0;
-        // Dispatch values to observers
-        liveScoreTeamA.setValue(scoreTeamA);
-        liveScoreTeamB.setValue(scoreTeamB);
-        liveFreeThrowsTeamA.setValue(freeThrowsTeamA);
-        liveFreeThrowsTeamB.setValue(freeThrowsTeamB);
+        // Dispatch values to observers.
+        getScoreTeamA().setValue(scoreTeamA);
+        getScoreTeamB().setValue(scoreTeamB);
+        getFreeThrowsTeamA().setValue(freeThrowsTeamA);
+        getFreeThrowsTeamB().setValue(freeThrowsTeamB);
     }
 }
