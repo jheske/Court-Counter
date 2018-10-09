@@ -52,35 +52,13 @@
                 android:textSize="56sp" />
 
             <TextView
-                android:id="@+id/team_a_three_point"
+                android:id="@+id/team_a_free_throws"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
                 android:paddingBottom="24dp"
-                android:text="+3 Points (0)"
-                android:textColor="#000000"
-                android:textSize="36sp" />
-
-            <TextView
-                android:id="@+id/team_a_two_point"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:paddingBottom="24dp"
-                android:text="+2 Points (0)"
-                android:textColor="#000000"
-                android:textSize="36sp" />
-
-            <TextView
-                android:id="@+id/team_a_one_point"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:paddingBottom="24dp"
-                android:text="Free Throw (0)"
+                android:text="Free Throws (0)"
                 android:textColor="#000000"
                 android:textSize="36sp" />
 
@@ -109,7 +87,7 @@
                 android:layout_marginRight="24dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="addOneForTeamA"
-                android:text="Free throw" />
+                android:text="Free throws" />
         </LinearLayout>
 
         <View
@@ -146,35 +124,13 @@
                 android:textSize="56sp" />
 
             <TextView
-                android:id="@+id/team_b_three_point"
+                android:id="@+id/team_b_free_throws"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
                 android:paddingBottom="24dp"
-                android:text="+3 Points (0)"
-                android:textColor="#000000"
-                android:textSize="36sp" />
-
-            <TextView
-                android:id="@+id/team_b_two_point"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:paddingBottom="24dp"
-                android:text="+2 Point (0)"
-                android:textColor="#000000"
-                android:textSize="36sp" />
-            
-            <TextView
-                android:id="@+id/team_b_one_point"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:paddingBottom="24dp"
-                android:text="Free Throw (0)"
+                android:text="Free Throws (0)"
                 android:textColor="#000000"
                 android:textSize="36sp" />
 
