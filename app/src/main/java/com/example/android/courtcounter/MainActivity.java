@@ -63,7 +63,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamA(View v) {
         scoreTeamA = scoreTeamA + 3;
-        freeThrowsTeamA = freeThrowsTeamA + 1;
         displayForTeamA(scoreTeamA);
     }
 
