@@ -123,10 +123,10 @@ public class MainActivity extends AppCompatActivity {
         TextView onePointView =  findViewById(R.id.team_a_one_point);
         TextView twoPointView =  findViewById(R.id.team_a_two_point);
         TextView threePointView = findViewById(R.id.team_a_three_point);
-        threePointView.setText("+3 Points " + String.valueOf(onePointCountTeamA) + ")");
+        threePointView.setText("+3 Points " + String.valueOf(threePointCountTeamA) + ")");
         twoPointView.setText("+2 Points " + String.valueOf(twoPointCountTeamA) + ")");
-        onePointView.setText("Free Throw " + String.valueOf(threePointCountTeamA) + ")");
-        scoreView.setText("SCORE " + String.valueOf(score));
+        onePointView.setText("Free Throw " + String.valueOf(onePointCountTeamA) + ")");
+        scoreView.setText(String.valueOf(score));
     }
 
     /**
@@ -137,9 +137,9 @@ public class MainActivity extends AppCompatActivity {
         TextView onePointView =  findViewById(R.id.team_b_one_point);
         TextView twoPointView = findViewById(R.id.team_b_two_point);
         TextView threePointView = findViewById(R.id.team_b_three_point);
-        threePointView.setText("+3 Points (" + String.valueOf(onePointCountTeamB) + ")");
+        threePointView.setText("+3 Points (" + String.valueOf(threePointCountTeamA) + ")");
         twoPointView.setText("+2 Points (" + String.valueOf(twoPointCountTeamB) + ")");
-        onePointView.setText("Free Throw (" + String.valueOf(threePointCountTeamB) + ")");
-        scoreView.setText("SCORE " + String.valueOf(score));
+        onePointView.setText("Free Throw (" + String.valueOf(onePointCountTeamA) + ")");
+        scoreView.setText(String.valueOf(score));
     }
 }
