@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
      * Increase the score for Team A by 1 point.
      */
     public void addOneForTeamA(View v) {
-        //Remove local reference
-        //scoreTeamA = scoreTeamA + 1;
-
         mViewModel.scoreTeamA = mViewModel.scoreTeamA + 1;
         mViewModel.onePointCountTeamA = mViewModel.onePointCountTeamA + 1;
         displayForTeamA(mViewModel.scoreTeamA);
@@ -66,9 +63,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamA(View v) {
         mViewModel.scoreTeamA = mViewModel.scoreTeamA + 3;
-        displayForTeamA(mViewModel.scoreTeamA);
-
         mViewModel.threePointCountTeamA = mViewModel.threePointCountTeamA + 1;
+        displayForTeamA(mViewModel.scoreTeamA);
     }
 
     /**
