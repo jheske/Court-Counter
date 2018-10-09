@@ -32,12 +32,8 @@ public class MainActivity extends AppCompatActivity {
     int scoreTeamB = 0;
 
     // 1, 2, and three point counters
-    int onePointCountTeamA = 0;
-    int twoPointCountTeamA = 0;
-    int threePointCountTeamA = 0;
-    int onePointCountTeamB = 0;
-    int twoPointCountTeamB = 0;
-    int threePointCountTeamB = 0;
+    int freeThrowsTeamA = 0;
+    int freeThrowsTeamB = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addOneForTeamA(View v) {
         scoreTeamA = scoreTeamA + 1;
-        onePointCountTeamA = onePointCountTeamA + 1;
+        freeThrowsTeamA = freeThrowsTeamA + 1;
         displayForTeamA(scoreTeamA);
     }
 
@@ -59,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamA(View v) {
         scoreTeamA = scoreTeamA + 2;
-        twoPointCountTeamA = twoPointCountTeamA + 1;
         displayForTeamA(scoreTeamA);
     }
 
@@ -68,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamA(View v) {
         scoreTeamA = scoreTeamA + 3;
-        threePointCountTeamA = threePointCountTeamA + 1;
+        freeThrowsTeamA = freeThrowsTeamA + 1;
         displayForTeamA(scoreTeamA);
     }
 
@@ -77,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addOneForTeamB(View v) {
         scoreTeamB = scoreTeamB + 1;
-        onePointCountTeamB = onePointCountTeamB + 1;
+        freeThrowsTeamB = freeThrowsTeamB + 1;
         displayForTeamB(scoreTeamB);
     }
 
@@ -86,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamB(View v) {
         scoreTeamB = scoreTeamB + 2;
-        twoPointCountTeamB = twoPointCountTeamB + 1;
         displayForTeamB(scoreTeamB);
     }
 
@@ -95,7 +89,6 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamB(View v) {
         scoreTeamB = scoreTeamB + 3;
-        threePointCountTeamB = threePointCountTeamB + 1;
         displayForTeamB(scoreTeamB);
     }
 
@@ -105,12 +98,8 @@ public class MainActivity extends AppCompatActivity {
     public void resetScore(View v) {
         scoreTeamA = 0;
         scoreTeamB = 0;
-        onePointCountTeamA = 0;
-        twoPointCountTeamA = 0;
-        threePointCountTeamA = 0;
-        onePointCountTeamB = 0;
-        twoPointCountTeamB = 0;
-        threePointCountTeamB = 0;
+        freeThrowsTeamA = 0;
+        freeThrowsTeamB = 0;
         displayForTeamA(scoreTeamA);
         displayForTeamB(scoreTeamB);
     }
@@ -121,11 +110,7 @@ public class MainActivity extends AppCompatActivity {
     public void displayForTeamA(int score) {
         TextView scoreView =  findViewById(R.id.team_a_score);
         TextView onePointView =  findViewById(R.id.team_a_one_point);
-        TextView twoPointView =  findViewById(R.id.team_a_two_point);
-        TextView threePointView = findViewById(R.id.team_a_three_point);
-        threePointView.setText("+3 Points (" + String.valueOf(threePointCountTeamA) + ")");
-        twoPointView.setText("+2 Points (" + String.valueOf(twoPointCountTeamA) + ")");
-        onePointView.setText("Free Throw (" + String.valueOf(onePointCountTeamA) + ")");
+        onePointView.setText("Free Throws (" + String.valueOf(freeThrowsTeamA) + ")");
         scoreView.setText(String.valueOf(score));
     }
 
@@ -137,9 +122,7 @@ public class MainActivity extends AppCompatActivity {
         TextView onePointView =  findViewById(R.id.team_b_one_point);
         TextView twoPointView = findViewById(R.id.team_b_two_point);
         TextView threePointView = findViewById(R.id.team_b_three_point);
-        threePointView.setText("+3 Points (" + String.valueOf(threePointCountTeamB) + ")");
-        twoPointView.setText("+2 Points (" + String.valueOf(twoPointCountTeamB) + ")");
-        onePointView.setText("Free Throw (" + String.valueOf(onePointCountTeamB) + ")");
+        onePointView.setText("Free Throws (" + String.valueOf(freeThrowsTeamB) + ")");
         scoreView.setText(String.valueOf(score));
     }
 }
