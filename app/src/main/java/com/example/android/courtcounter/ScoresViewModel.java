@@ -23,16 +23,19 @@ import android.support.annotation.NonNull;
  */
 class ScoresViewModel extends ViewModel {
 
-    // Create Model variables to hold team scores
     private int scoreTeamA;
     private int scoreTeamB;
+    private int freeThrowsTeamA;
+    private int freeThrowsTeamB;
 
     /**
-     * Create MutableLiveData objects to dispatch Model updated values to Observers
+     * Create MutableLiveData objects to dispatch updated values to Observers
      * MutableLiveData is a subclass of LiveData that allows you to change values using setValue()
      */
     private MutableLiveData<Integer> liveScoreTeamA;
     private MutableLiveData<Integer> liveScoreTeamB;
+    private MutableLiveData<Integer> liveFreeThrowsTeamA;
+    private MutableLiveData<Integer> liveFreeThrowsTeamB;
 
     // Constructor that ScoresViewModelFactory will call to create the ViewModel
     ScoresViewModel(Integer extraPoints) {
@@ -40,7 +43,7 @@ class ScoresViewModel extends ViewModel {
     }
 
     /**
-     * Instantiate LiveData Objects liveScoreBeamA and liveScoreTeamB
+     * Instantiate LiveData Objects for scores and freeThrows
      * Their values will be dispatched to all Observers whenever they are changed using setValue().
      */
     MutableLiveData<Integer> getScoreTeamA() {
@@ -55,6 +58,18 @@ class ScoresViewModel extends ViewModel {
         return liveScoreTeamB;
     }
 
+    MutableLiveData<Integer> getFreeThrowsTeamA() {
+        if (liveFreeThrowsTeamA == null)
+            liveFreeThrowsTeamA = new MutableLiveData<>();
+        return liveFreeThrowsTeamA;
+    }
+
+    MutableLiveData<Integer> getFreeThrowsTeamB() {
+        if (liveFreeThrowsTeamB == null)
+            liveFreeThrowsTeamB = new MutableLiveData<>();
+        return liveFreeThrowsTeamB;
+    }
+
     /**
      * Update scoreTeamA and then call liveScoreTeamA.setValue(scoreTeamA)
      * to dispatch the new value to all Observers.
@@ -62,6 +77,10 @@ class ScoresViewModel extends ViewModel {
     void updateTeamAPoints(int points) {
         scoreTeamA = scoreTeamA + points;
         getScoreTeamA().setValue(scoreTeamA);
+        if (points == 1) {
+            freeThrowsTeamA = freeThrowsTeamA + 1;
+            getFreeThrowsTeamA().setValue(freeThrowsTeamA);
+        }
     }
 
     /**
@@ -70,7 +89,23 @@ class ScoresViewModel extends ViewModel {
      */
     void updateTeamBPoints(Integer points) {
         scoreTeamB = scoreTeamB + points;
-        liveScoreTeamB.setValue(scoreTeamB);
+        getScoreTeamB().setValue(scoreTeamB);
+        if (points == 1) {
+            freeThrowsTeamB = freeThrowsTeamB + 1;
+            getFreeThrowsTeamB().setValue(freeThrowsTeamB);
+        }
     }
 
+    void resetScores() {
+        // Update model
+        scoreTeamA = 0;
+        scoreTeamB = 0;
+        freeThrowsTeamA = 0;
+        freeThrowsTeamB = 0;
+        // Dispatch values to observers
+        liveScoreTeamA.setValue(scoreTeamA);
+        liveScoreTeamB.setValue(scoreTeamB);
+        liveFreeThrowsTeamA.setValue(freeThrowsTeamA);
+        liveFreeThrowsTeamB.setValue(freeThrowsTeamB);
+    }
 }

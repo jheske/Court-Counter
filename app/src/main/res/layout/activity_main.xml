@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2018 The Android Open Source Project
-
+<!-- Copyright (C) 2015 The Android Open Source Project
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
      You may obtain a copy of the License at
@@ -52,32 +51,43 @@
                 android:textColor="#000000"
                 android:textSize="56sp" />
 
+            <TextView
+                android:id="@+id/team_a_free_throws"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:paddingBottom="24dp"
+                android:text="Free Throws (0)"
+                android:textColor="#000000"
+                android:textSize="36sp" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
+                android:layout_marginBottom="8dp"
                 android:onClick="addThreeForTeamA"
                 android:text="+3 Points" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
+                android:layout_marginBottom="8dp"
                 android:onClick="addTwoForTeamA"
                 android:text="+2 Points" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:onClick="addOneForTeamA"
-                android:text="Free throw" />
+                android:layout_marginBottom="8dp"
+                android:onClick="freeThrowTeamA"
+                android:text="Free throws" />
         </LinearLayout>
 
         <View
@@ -113,31 +123,42 @@
                 android:textColor="#000000"
                 android:textSize="56sp" />
 
+            <TextView
+                android:id="@+id/team_b_free_throws"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:paddingBottom="24dp"
+                android:text="Free Throws (0)"
+                android:textColor="#000000"
+                android:textSize="36sp" />
+
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
+                android:layout_marginBottom="8dp"
                 android:onClick="addThreeForTeamB"
                 android:text="+3 Points" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp"
+                android:layout_marginBottom="8dp"
                 android:onClick="addTwoForTeamB"
                 android:text="+2 Points" />
 
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp"
-                android:onClick="addOneForTeamB"
+                android:layout_marginBottom="8dp"
+                android:onClick="freeThrowTeamB"
                 android:text="Free throw" />
         </LinearLayout>
     </LinearLayout>

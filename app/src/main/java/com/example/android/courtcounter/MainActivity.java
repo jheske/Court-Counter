@@ -43,37 +43,48 @@ public class MainActivity extends AppCompatActivity {
         // Use the factory to create a ViewModel with arguments
         mViewModel = ViewModelProviders.of(this, scoresViewModelFactory).get(ScoresViewModel.class);
         /*
-         * Create observer to receive score changes from ViewModel and update the UI
+         * Create observers to receive score and freeThrow changes from ViewModel and update the UI
          */
         final Observer<Integer> teamAScoreObserver = new Observer<Integer>() {
             @Override
-            public void onChanged(final Integer newScore) {
-                // Update the UI with teamA score data
-                displayForTeamA(newScore);
+            public void onChanged(final Integer score) {
+                displayScoreForTeamA(score);
             }
         };
 
         final Observer<Integer> teamBScoreObserver = new Observer<Integer>() {
             @Override
             public void onChanged(final Integer score) {
-                // Update the UI with teamA score data
-                displayForTeamB(score);
+                displayScoreForTeamB(score);
             }
         };
 
-        /*
-         * Create observers to wait for ViewModel to dispatch changes.
-         * Pass in this Activity as the LifecycleOwner and the observer.
-         */
+        final Observer<Integer> teamAFreeThrowObserver = new Observer<Integer>() {
+            @Override
+            public void onChanged(final Integer freeThrows) {
+                displayFreeThrowsForTeamA(freeThrows);
+            }
+        };
+
+        final Observer<Integer> teamBFreeThrowObserver = new Observer<Integer>() {
+            @Override
+            public void onChanged(final Integer freeThrows) {
+                displayFreeThrowsForTeamB(freeThrows);
+            }
+        };
+
+        // Begin observing LiveData.  "this" Activity is the LifecycleOwner, which
+        // handles Lifecycle events (configuration changes!) automatically.
         mViewModel.getScoreTeamA().observe(this, teamAScoreObserver);
         mViewModel.getScoreTeamB().observe(this, teamBScoreObserver);
-
+        mViewModel.getFreeThrowsTeamA().observe(this, teamAFreeThrowObserver);
+        mViewModel.getFreeThrowsTeamB().observe(this, teamBFreeThrowObserver);
     }
 
     /**
      * Call ViewModel to increase the score for Team A by 1 point.
      */
-    public void addOneForTeamA(View v) {
+    public void freeThrowTeamA(View v) {
         mViewModel.updateTeamAPoints(1);
     }
 
@@ -94,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Call ViewModel to increase the score for Team B by 1 point.
      */
-    public void addOneForTeamB(View v) {
+    public void freeThrowTeamB(View v) {
         mViewModel.updateTeamBPoints(1);
     }
 
@@ -116,23 +127,32 @@ public class MainActivity extends AppCompatActivity {
      * Call ViewModel to reset the score for both teams back to 0.
      */
     public void resetScore(View v) {
-        mViewModel.updateTeamAPoints(0);
-        mViewModel.updateTeamBPoints(0);
+        mViewModel.resetScores();
     }
 
     /**
      * Displays the given score for Team A.
      */
-    public void displayForTeamA(int score) {
-        TextView scoreView = findViewById(R.id.team_a_score);
+    public void displayScoreForTeamA(int score) {
+        TextView scoreView =  findViewById(R.id.team_a_score);
         scoreView.setText(String.valueOf(score));
+    }
+
+    public void displayFreeThrowsForTeamA(int freeThrows) {
+        TextView freeThrowsView =  findViewById(R.id.team_a_free_throws);
+        freeThrowsView.setText(String.valueOf(freeThrows));
     }
 
     /**
      * Displays the given score for Team B.
      */
-    public void displayForTeamB(int score) {
-        TextView scoreView = findViewById(R.id.team_b_score);
+    public void displayScoreForTeamB(int score) {
+        TextView scoreView =  findViewById(R.id.team_b_score);
         scoreView.setText(String.valueOf(score));
+    }
+
+    public void displayFreeThrowsForTeamB(int freeThrows) {
+        TextView freeThrowsView =  findViewById(R.id.team_b_free_throws);
+        freeThrowsView.setText(String.valueOf(freeThrows));
     }
 }
