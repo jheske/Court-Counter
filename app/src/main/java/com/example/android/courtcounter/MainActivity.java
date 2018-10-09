@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Retrieve data from teamScoresViewModel
         mViewModel = ViewModelProviders.of(this).get(ScoresViewModel.class);
-        displayForTeamA(mViewModel.scoreTeamA);
-        displayForTeamB(mViewModel.scoreTeamB);
+        displayForTeamA();
+        displayForTeamB();
     }
 
     /**
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
     public void addOneForTeamA(View v) {
         mViewModel.scoreTeamA = mViewModel.scoreTeamA + 1;
         mViewModel.freeThrowsTeamA = mViewModel.freeThrowsTeamA + 1;
-        displayForTeamA(mViewModel.scoreTeamA);
+        displayForTeamA();
     }
 
     /**
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamA(View v) {
         mViewModel.scoreTeamA = mViewModel.scoreTeamA + 2;
-        displayForTeamA(mViewModel.scoreTeamA);
+        displayForTeamA();
     }
 
     /**
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamA(View v) {
         mViewModel.scoreTeamA = mViewModel.scoreTeamA + 3;
-        displayForTeamA(mViewModel.scoreTeamA);
+        displayForTeamA();
     }
 
     /**
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     public void addOneForTeamB(View v) {
         mViewModel.scoreTeamB = mViewModel.scoreTeamB + 1;
         mViewModel.freeThrowsTeamB = mViewModel.freeThrowsTeamB + 1;
-        displayForTeamB(mViewModel.scoreTeamB);
+        displayForTeamB();
     }
 
     /**
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamB(View v) {
         mViewModel.scoreTeamB = mViewModel.scoreTeamB + 2;
-        displayForTeamB(mViewModel.scoreTeamB);
+        displayForTeamB();
     }
 
     /**
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamB(View v) {
         mViewModel.scoreTeamB = mViewModel.scoreTeamB + 3;
-        displayForTeamB(mViewModel.scoreTeamB);
+        displayForTeamB();
     }
 
     /**
@@ -95,25 +95,27 @@ public class MainActivity extends AppCompatActivity {
      */
     public void resetScore(View v) {
         mViewModel.resetScores();
+        displayForTeamA();
+        displayForTeamB();
     }
 
     /**
      * Displays the given score for Team A.
      */
-    public void displayForTeamA(int score) {
+    public void displayForTeamA() {
         TextView scoreView =  findViewById(R.id.team_a_score);
         TextView onePointView =  findViewById(R.id.team_a_free_throws);
         onePointView.setText("Free Throws (" + String.valueOf(mViewModel.freeThrowsTeamA) + ")");
-        scoreView.setText(String.valueOf(score));
+        scoreView.setText(String.valueOf(mViewModel.scoreTeamA));
     }
 
     /**
      * Displays the given score for Team B.
      */
-    public void displayForTeamB(int score) {
+    public void displayForTeamB() {
         TextView scoreView =  findViewById(R.id.team_b_score);
         TextView onePointView =  findViewById(R.id.team_b_free_throws);
         onePointView.setText("Free Throws (" + String.valueOf(mViewModel.freeThrowsTeamB) + ")");
-        scoreView.setText(String.valueOf(score));
+        scoreView.setText(String.valueOf(mViewModel.scoreTeamB));
     }
 }
