@@ -104,8 +104,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void displayForTeamA() {
         TextView scoreView =  findViewById(R.id.team_a_score);
-        TextView onePointView =  findViewById(R.id.team_a_free_throws);
-        onePointView.setText("Free Throws (" + String.valueOf(mViewModel.freeThrowsTeamA) + ")");
+        TextView freeThrowsView =  findViewById(R.id.team_a_free_throws);
+        freeThrowsView.setText("Free Throws (" + String.valueOf(mViewModel.freeThrowsTeamA) + ")");
         scoreView.setText(String.valueOf(mViewModel.scoreTeamA));
     }
 
@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity {
      */
     public void displayForTeamB() {
         TextView scoreView =  findViewById(R.id.team_b_score);
-        TextView onePointView =  findViewById(R.id.team_b_free_throws);
-        onePointView.setText("Free Throws (" + String.valueOf(mViewModel.freeThrowsTeamB) + ")");
+        TextView freeThrowsView =  findViewById(R.id.team_b_free_throws);
+        freeThrowsView.setText("Free Throws (" + String.valueOf(mViewModel.freeThrowsTeamB) + ")");
         scoreView.setText(String.valueOf(mViewModel.scoreTeamB));
     }
 }
