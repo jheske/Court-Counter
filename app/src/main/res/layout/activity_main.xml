@@ -76,7 +76,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="24dp"
                 android:layout_marginRight="24dp"
-                android:onClick="addOneForTeamA"
+                android:onClick="freeThrowTeamA"
                 android:text="Free throw" />
         </LinearLayout>
 
@@ -137,7 +137,7 @@
                 android:layout_marginBottom="8dp"
                 android:layout_marginLeft="22dp"
                 android:layout_marginRight="22dp"
-                android:onClick="addOneForTeamB"
+                android:onClick="freeThrowTeamB"
                 android:text="Free throw" />
         </LinearLayout>
     </LinearLayout>
