@@ -52,17 +52,6 @@
                 android:textSize="56sp" />
 
             <TextView
-                android:id="@+id/team_a_two_point"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:paddingBottom="24dp"
-                android:text="+2 Points (0)"
-                android:textColor="#000000"
-                android:textSize="36sp" />
-
-            <TextView
                 android:id="@+id/team_a_three_point"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -70,6 +59,17 @@
                 android:gravity="center"
                 android:paddingBottom="24dp"
                 android:text="+3 Points (0)"
+                android:textColor="#000000"
+                android:textSize="36sp" />
+
+            <TextView
+                android:id="@+id/team_a_two_point"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:paddingBottom="24dp"
+                android:text="+2 Points (0)"
                 android:textColor="#000000"
                 android:textSize="36sp" />
 
@@ -146,17 +146,6 @@
                 android:textSize="56sp" />
 
             <TextView
-                android:id="@+id/team_b_two_point"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
-                android:paddingBottom="24dp"
-                android:text="+2 Point (0)"
-                android:textColor="#000000"
-                android:textSize="36sp" />
-
-            <TextView
                 android:id="@+id/team_b_three_point"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -167,6 +156,17 @@
                 android:textColor="#000000"
                 android:textSize="36sp" />
 
+            <TextView
+                android:id="@+id/team_b_two_point"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center"
+                android:paddingBottom="24dp"
+                android:text="+2 Point (0)"
+                android:textColor="#000000"
+                android:textSize="36sp" />
+            
             <TextView
                 android:id="@+id/team_b_one_point"
                 android:layout_width="match_parent"
