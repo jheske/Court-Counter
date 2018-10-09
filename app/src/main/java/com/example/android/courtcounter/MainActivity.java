@@ -118,9 +118,9 @@ public class MainActivity extends AppCompatActivity {
         TextView onePointView =  findViewById(R.id.team_a_one_point);
         TextView twoPointView =  findViewById(R.id.team_a_two_point);
         TextView threePointView = findViewById(R.id.team_a_three_point);
-        threePointView.setText("+3 Points " + String.valueOf(mViewModel.threePointCountTeamA) + ")");
-        twoPointView.setText("+2 Points " + String.valueOf(mViewModel.twoPointCountTeamA) + ")");
-        onePointView.setText("Free Throw " + String.valueOf(mViewModel.onePointCountTeamA) + ")");
+        threePointView.setText("+3 Points (" + String.valueOf(mViewModel.threePointCountTeamA) + ")");
+        twoPointView.setText("+2 Points (" + String.valueOf(mViewModel.twoPointCountTeamA) + ")");
+        onePointView.setText("Free Throw (" + String.valueOf(mViewModel.onePointCountTeamA) + ")");
         scoreView.setText(String.valueOf(score));
     }
 
