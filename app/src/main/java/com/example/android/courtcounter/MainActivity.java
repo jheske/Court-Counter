@@ -17,8 +17,6 @@ package com.example.android.courtcounter;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,6 +31,14 @@ public class MainActivity extends AppCompatActivity {
     // Tracks the score for Team B
     int scoreTeamB = 0;
 
+    // 1, 2, and three point counters
+    int onePointCountTeamA = 0;
+    int twoPointCountTeamA = 0;
+    int threePointCountTeamA = 0;
+    int onePointCountTeamB = 0;
+    int twoPointCountTeamB = 0;
+    int threePointCountTeamB = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addOneForTeamA(View v) {
         scoreTeamA = scoreTeamA + 1;
+        onePointCountTeamA = onePointCountTeamA + 1;
         displayForTeamA(scoreTeamA);
     }
 
@@ -52,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamA(View v) {
         scoreTeamA = scoreTeamA + 2;
+        twoPointCountTeamA = twoPointCountTeamA + 1;
         displayForTeamA(scoreTeamA);
     }
 
@@ -60,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamA(View v) {
         scoreTeamA = scoreTeamA + 3;
+        threePointCountTeamA = threePointCountTeamA + 1;
         displayForTeamA(scoreTeamA);
     }
 
@@ -68,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addOneForTeamB(View v) {
         scoreTeamB = scoreTeamB + 1;
+        onePointCountTeamB = onePointCountTeamB + 1;
         displayForTeamB(scoreTeamB);
     }
 
@@ -76,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addTwoForTeamB(View v) {
         scoreTeamB = scoreTeamB + 2;
+        twoPointCountTeamB = twoPointCountTeamB + 1;
         displayForTeamB(scoreTeamB);
     }
 
@@ -84,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public void addThreeForTeamB(View v) {
         scoreTeamB = scoreTeamB + 3;
+        threePointCountTeamB = threePointCountTeamB + 1;
         displayForTeamB(scoreTeamB);
     }
 
@@ -93,6 +105,12 @@ public class MainActivity extends AppCompatActivity {
     public void resetScore(View v) {
         scoreTeamA = 0;
         scoreTeamB = 0;
+        onePointCountTeamA = 0;
+        twoPointCountTeamA = 0;
+        threePointCountTeamA = 0;
+        onePointCountTeamB = 0;
+        twoPointCountTeamB = 0;
+        threePointCountTeamB = 0;
         displayForTeamA(scoreTeamA);
         displayForTeamB(scoreTeamB);
     }
