@@ -27,6 +27,20 @@ class ScoresViewModel extends ViewModel {
     int freeThrowsTeamA = 0;
     int freeThrowsTeamB = 0;
 
+    void updateTeamAScore(int points) {
+        scoreTeamA = scoreTeamA + points;
+        if (points == 1) {
+            freeThrowsTeamA  = freeThrowsTeamA + 1;
+        }
+    }
+
+    void updateTeamBScore(int points) {
+        scoreTeamB = scoreTeamB + points;
+        if (points == 1) {
+            freeThrowsTeamB  = freeThrowsTeamB + 1;
+        }
+    }
+
     void resetScores() {
         scoreTeamA = 0;
         scoreTeamB = 0;
