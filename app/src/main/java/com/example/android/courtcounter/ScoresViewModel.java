@@ -36,7 +36,7 @@ class ScoresViewModel extends ViewModel {
 
     /**
      * Instantiate LiveData Objects for scores and freeThrows
-     * Their values will be dispatched to all Observers whenever they are changed using setValue().
+     * Update methods will dispatch them to all Observers using setValue().
      */
     MutableLiveData<Integer> getScoreTeamA() {
         if (liveScoreTeamA == null)
@@ -63,25 +63,22 @@ class ScoresViewModel extends ViewModel {
     }
 
     /**
-     * Update scoreTeamA and then call liveScoreTeamA.setValue(scoreTeamA)
-     * to dispatch the new value to all Observers.
+     * Update scores and then use liveScores to dispatch them to observers.
+     * If points is 1 then we know it's a freeThrow so update the counter.
+     * Access liveData objects using getter methods to they've been created and aren't null.
      */
     void updateTeamAPoints(int points) {
         scoreTeamA = scoreTeamA + points;
-        liveScoreTeamA.setValue(scoreTeamA);
+        getFreeThrowsTeamA().setValue(scoreTeamA);
         if (points == 1) {
             freeThrowsTeamA = freeThrowsTeamA + 1;
             getFreeThrowsTeamA().setValue(freeThrowsTeamA);
         }
     }
 
-    /**
-     * Update scoreTeamA and then call liveScoreTeamB.setValue(scoreTeamB)
-     * to dispatch the new value to all Observers.
-     */
     void updateTeamBPoints(Integer points) {
         scoreTeamB = scoreTeamB + points;
-        liveScoreTeamB.setValue(scoreTeamB);
+        getFreeThrowsTeamB().setValue(scoreTeamB);
         if (points == 1) {
             freeThrowsTeamB = freeThrowsTeamB + 1;
             getFreeThrowsTeamB().setValue(freeThrowsTeamB);

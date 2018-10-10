@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
 
-        // Begin observing LiveData.  "this" Activity is the LifecycleOwner, which
+        // Attach Observers to LiveData.  "this" Activity is the LifecycleOwner, which
         // handles Lifecycle events (configuration changes!) automatically.
         mViewModel.getScoreTeamA().observe(this, teamAScoreObserver);
         mViewModel.getScoreTeamB().observe(this, teamBScoreObserver);
